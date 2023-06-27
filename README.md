@@ -12,7 +12,10 @@ As contas feitas simulam o cadastro de usuários em um aplicativo e contém as s
 - endereço
 - emprego
 
-Currently, every hour an ingestion pipeline at [.github/workflows/ingest_pipeline.yaml](.github/workflows/ingest_pipeline.yaml) is triggered. This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket. 
+A arquitetura da solução é a seguinte:
+- O pacote `how-fake-accounts` é utilizado para simular a criação de contas aleatórias
+- O código localizado em [scripts/ingest_accounts_into_s3.py](scripts/ingest_accounts_into_s3.py) pega os dados de cadastros realizados e faz o upload deles no S3
+- O Github Actions é utilizado para schedular um job que consiste em executar o código de ingestão anterior de hora em hora. Isso é feito através do arquivo [.github/workflows/ingest_pipeline.yaml](.github/workflows/ingest_pipeline.yaml). **This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket**. 
 
 ## How to install
 
