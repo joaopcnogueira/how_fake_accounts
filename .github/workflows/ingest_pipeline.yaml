@@ -20,4 +20,7 @@ jobs:
           make install
 
       - name: Ingest accounts into S3
+        env:
+          AWS_ID: ${{ secrets.AWS_ID }}
+          AWS_KEY: ${{ secrets.AWS_KEY }}
         run: python scripts/ingest_accounts_into_s3.py
