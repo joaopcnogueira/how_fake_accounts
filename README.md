@@ -2,6 +2,16 @@
 
 Pacote python criado para gerar contas fakes, para o primeiro desafio do bootcamp de engenharia de dados da How.
 
+As contas feitas simulam o cadastro de usuários em um aplicativo e contém as seguintes informações para cada usuário cadastrado:
+
+- nome
+- email
+- número de telefone
+- cpf
+- data de nascimento
+- endereço
+- emprego
+
 ## How to install
 
 ```bash
