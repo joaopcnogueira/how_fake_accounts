@@ -17,12 +17,12 @@ We have mainly two ways to use the package:
 ### Package Interface
 
 ```python
-from how_fake_accounts import generate_accounts, save_accounts
+from how_fake_accounts import fake
 
 # generate 10 random accounts
-accounts = generate_accounts(10)
+accounts = fake.generate_accounts(10)
 print(accounts)
-save_accounts(accounts)
+fake.save_locally(accounts)
 ```
 
 
@@ -30,11 +30,16 @@ save_accounts(accounts)
 
 To generate 50 accounts, just type into terminal:
 
-```python
-how_fake_accounts --n-accounts 50
+```bash
+how_fake --n-accounts 50
 ```
 or
-```python
-python -m how_fake_accounts --n-accounts 50 --save True
+```bash
+python -m how_fake --n-accounts 50
 ```
 
+for help, just type:
+
+```bash
+how_fake --help
+```

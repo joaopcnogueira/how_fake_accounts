@@ -1,5 +1,5 @@
 import argparse
-from how_fake_accounts import generate_accounts, save_accounts
+from how_fake_accounts import fake
 
 def parse_command_line():
     """Parse the command line for input arguments."""
@@ -13,10 +13,10 @@ def parse_command_line():
 
 def main():
     args = parse_command_line()
-    accounts = generate_accounts(args.n_accounts)
+    accounts = fake.generate_accounts(args.n_accounts)
 
     if args.save:
-        save_accounts(accounts, path=args.path, filename=args.filename)
+        fake.save_locally(accounts, path=args.path, filename=args.filename)
     if args.verbose:
         print(accounts)
 

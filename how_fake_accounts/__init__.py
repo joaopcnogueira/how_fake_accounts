@@ -1,1 +1,1 @@
-from .core import generate_accounts, save_accounts
+from .core import fake
