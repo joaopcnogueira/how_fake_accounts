@@ -14,6 +14,39 @@ fake = Faker('pt_BR')
 
 class GenerateAccountsProvider(BaseProvider):
     def generate_accounts(self, n_accounts=10):
+        """Generate a list of fake accounts
+
+        Args:
+            n_accounts (int, optional): Number of accounts to generate. Defaults to 10.
+
+        Returns:
+            list: List of accounts
+
+        Example:
+            >>> fake.generate_accounts(2)
+            [
+                {
+                    'registration_date': '2021-08-31 10:00:00',
+                    'name': 'João da Silva',
+                    'email': '
+                    'phone': '(11) 99999-9999',
+                    'cpf': '999.999.999-99',
+                    'birth_date': '1990-01-01',
+                    'address': 'Rua dos Bobos, 0',
+                    'job': 'Programador'
+                },
+                {
+                    'registration_date': '2021-08-31 10:00:00',
+                    'name': 'João da Silva',
+                    'email': '
+                    'phone': '(11) 99999-9999',
+                    'cpf': '999.999.999-99',
+                    'birth_date': '1990-01-01',
+                    'address': 'Rua dos Bobos, 0',
+                    'job': 'Programador'
+                }
+            ]
+        """
         accounts = []
         for i in range(n_accounts):
             accounts.append({
@@ -28,19 +61,23 @@ class GenerateAccountsProvider(BaseProvider):
             })
         return accounts
 
+
     def save_locally(self, accounts, path='.', filename='accounts.json'):
+        """Save accounts into a json file locally
+        """
         filename = Path(path) / 'accounts.json'
         with open(filename, 'w') as file:
             json.dump(accounts, file, default=str)
+
 
     def save_into_s3(self, 
                     accounts, 
                     bucket,
                     key,
-                    filename='accounts.json',
                     aws_access_key_id=None,
                     aws_secret_access_key=None
     ): 
+        """Save accounts into a json file in S3 bucket"""
         s3_client = boto3.client(
             's3',
             aws_access_key_id=aws_access_key_id,
