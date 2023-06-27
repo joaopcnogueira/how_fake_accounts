@@ -12,6 +12,8 @@ As contas feitas simulam o cadastro de usuários em um aplicativo e contém as s
 - endereço
 - emprego
 
+Currently, every hour an ingestion pipeline at [.github/workflows/ingestion_pipeline.yaml](.github/workflows/ingestion_pipeline.yaml) is triggered. This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket. 
+
 ## How to install
 
 ```bash
