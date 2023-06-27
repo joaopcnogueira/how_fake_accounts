@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='how_fake_accounts',
-    version='1.0.0',
+    version='1.1.0',
     author='João Nogueira',
     packages=['how_fake_accounts'],
     long_description=open('README.md', 'r+').read(),

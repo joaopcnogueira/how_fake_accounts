@@ -11,6 +11,7 @@ class GenerateAccountsProvider(BaseProvider):
         accounts = []
         for i in range(n_accounts):
             accounts.append({
+                'registration_date': str(fake.date_time_between(start_date='-1y', end_date='now')),
                 'name': fake.name(),
                 'email': fake.email(),
                 'phone': fake.cellphone_number(),
