@@ -1,6 +1,6 @@
 # How Fake Accounts
 
-Pacote python criado para gerar contas fakes, para o primeiro desafio do bootcamp de engenharia de dados da How.
+Pacote python criado para gerar contas fakes, para o primeiro desafio do bootcamp de engenharia de dados da How. O pacote é a implementação de um provider customizado do [Faker](https://faker.readthedocs.io/en/master/#), conforme sugerido em https://faker.readthedocs.io/en/master/#how-to-create-a-provider.
 
 As contas feitas simulam o cadastro de usuários em um aplicativo e contém as seguintes informações para cada usuário cadastrado:
 
