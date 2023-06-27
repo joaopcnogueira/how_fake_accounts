@@ -1,5 +1,11 @@
+import os
 import json
+import logging
 from pathlib import Path
+from datetime import datetime
+
+import boto3
+from botocore.exceptions import ClientError
 
 from faker import Faker
 from faker.providers import BaseProvider
@@ -27,17 +33,46 @@ class GenerateAccountsProvider(BaseProvider):
         with open(filename, 'w') as file:
             json.dump(accounts, file, default=str)
 
-    def save_into_s3(self, accounts):
-        #import boto3
-        #s3 = boto3.resource('s3')
-        #object = s3.Object(bucket, filename)
-        #object.put(Body=json.dumps(accounts, default=str))
-        raise NotImplementedError
+    def save_into_s3(self, 
+                    accounts, 
+                    bucket,
+                    key,
+                    filename='accounts.json',
+                    aws_access_key_id=None,
+                    aws_secret_access_key=None
+    ): 
+        s3_client = boto3.client(
+            's3',
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key
+        )
+        try:
+            s3_client.put_object(
+                Body=json.dumps(accounts, default=str),
+                Bucket=bucket,
+                Key=key
+            )
+        except ClientError as e:
+            logging.error(e)
+            return False
+        
+        return True
             
 
 fake.add_provider(GenerateAccountsProvider)
 
+
 if __name__ == '__main__':
+    from dotenv import load_dotenv
+    load_dotenv()
+
     accounts = fake.generate_accounts()
-    print(accounts)
-    fake.save_locally(accounts)
+    filename = datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + '-accounts.json'
+
+    fake.save_into_s3(
+        accounts,
+        bucket='missy-aulas-how',
+        key='bronze/desafio-01/' + filename,
+        aws_access_key_id=os.getenv('AWS_ID'),
+        aws_secret_access_key=os.getenv('AWS_KEY')
+    )
