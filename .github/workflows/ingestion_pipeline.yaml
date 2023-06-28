@@ -26,4 +26,4 @@ jobs:
         env:
           AWS_ID: ${{ secrets.AWS_ID }}
           AWS_KEY: ${{ secrets.AWS_KEY }}
-        run: jupyter nbconvert --to notebook --execute notebooks/ingestion_pipeline.ipynb
+        run: python pipelines/ingestion_pipeline.py

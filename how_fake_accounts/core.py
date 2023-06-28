@@ -1,13 +1,4 @@
-import os
-import json
-import logging
 import pandas as pd
-from pathlib import Path
-from datetime import datetime
-
-import boto3
-from io import StringIO
-from botocore.exceptions import ClientError
 
 from faker import Faker
 from faker.providers import BaseProvider
