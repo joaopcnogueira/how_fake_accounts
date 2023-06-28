@@ -69,6 +69,7 @@ Segue abaixo alguns screenshots e consultas realizadas
 - [ ] Escrever todos os serviços em Cloud Formation [cf_project_aws_resources.yaml](cf_project_aws_resources.yaml)
     - [x] AWS S3 (criação do bucket)
     - [ ] AWS Glue (crawler)
+- [ ] Restringir acesso a camada landing-zone apenas aos super usuários (o usuário missy, por exemplo, não deve ter acesso a esse bucket, apenas a partir do bucket bronze)
 
   
 # Sobre o Pacote
