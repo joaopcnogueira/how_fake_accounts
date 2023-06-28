@@ -65,9 +65,11 @@ Segue abaixo alguns screenshots e consultas realizadas
 ![](imgs/aws-athena-query3.png)
 
 # Próximos Passos
-- Escrever todos os serviços em Cloud Formation [cf_project_aws_resources.yaml](cf_project_aws_resources.yaml)
+- [ ] Mover os dados da camada landing-zone para uma camada bronze, onde os dados de cpf estariam criptografados.
+- [ ] Escrever todos os serviços em Cloud Formation [cf_project_aws_resources.yaml](cf_project_aws_resources.yaml)
     - [x] AWS S3 (criação do bucket)
     - [ ] AWS Glue (crawler)
+
   
 # Sobre o Pacote
 
