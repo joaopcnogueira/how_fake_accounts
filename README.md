@@ -64,6 +64,11 @@ Segue abaixo alguns screenshots e consultas realizadas
 - O Athena é utilizado para fazer as consultas
 
 
+# Próximos Passos
+- Escrever todos os serviços em Cloud Formation [cf_project_aws_resources.yaml](cf_project_aws_resources.yaml)
+    - [x] AWS S3 (criação do bucket)
+    - [ ] AWS Glue (crawler)
+  
 # Sobre o Pacote
 
 ## How to install
