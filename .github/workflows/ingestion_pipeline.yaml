@@ -27,7 +27,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY }}
         run: |
-          echo $AWS_ID
-          echo $AWS_KEY
           python pipelines/ingestion_pipeline.py
 
