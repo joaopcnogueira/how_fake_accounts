@@ -10,7 +10,9 @@ setup(
     python_requires='>=3.6',
     install_requires=[
         'Faker',
-        'boto3'
+        'boto3',
+        'pandas',
+        'awswrangler'
     ],
     entry_points={
         'console_scripts': [

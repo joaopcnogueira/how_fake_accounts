@@ -1,3 +1,7 @@
 Faker
 boto3
-python-dotenv
+pandas
+ipython
+ipykernel
+jupyter
+awswrangler

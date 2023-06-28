@@ -38,9 +38,9 @@ from how_fake_accounts import fake
 
 # generate 10 random accounts
 accounts = fake.generate_accounts(10)
-print(accounts)
+df.head()
 
-filename = datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + '-accounts.json'
+filename = datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + '-accounts.csv'
 fake.save_into_s3(
     accounts,
     bucket='missy-aulas-how',
