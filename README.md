@@ -8,6 +8,18 @@ Esse projeto é a solução para o primeiro desafio do bootcamp da How de engenh
 4. Criar um Crawler dos dados com o AWS Glue
 5. Escrever 3 consultas nos dados utilizando o AWS Athena
 
+### Arquitetura da Solução
+
+![](imgs/how-arquitetura-desafio01.png)
+
+- O pacote `how-fake-accounts` é utilizado para simular a criação de contas aleatórias
+- O código localizado em [pipelines/ingestion_pipeline.py](pipelines/ingestion_pipeline.py) pega os dados de cadastros realizados e faz o upload deles no S3
+- O Github Actions é utilizado para schedular um job que consiste em executar o código de ingestão anterior de hora em hora. Isso é feito através do arquivo [.github/workflows/ingestion_pipeline.yaml](.github/workflows/ingestion_pipeline.yaml). **This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket**. 
+- Um Crawler é criado com o AWS Glue para gerar os metados necessários para criar tabelas a partir dos arquivos no bucket
+- O Athena é utilizado para fazer as consultas
+
+
+
 ## Criar uma conta AWS
 
 Nesse caso, basta ir em https://portal.aws.amazon.com/billing/signup e preencher com as informações solicitadas para a criação de uma conta.
@@ -51,18 +63,6 @@ Segue abaixo alguns screenshots e consultas realizadas
 ![](imgs/aws-athena-query1.png)
 ![](imgs/aws-athena-query2.png)
 ![](imgs/aws-athena-query3.png)
-
-
-## Arquitetura da Solução
-
-![](imgs/how-arquitetura-desafio01.png)
-
-- O pacote `how-fake-accounts` é utilizado para simular a criação de contas aleatórias
-- O código localizado em [pipelines/ingestion_pipeline.py](pipelines/ingestion_pipeline.py) pega os dados de cadastros realizados e faz o upload deles no S3
-- O Github Actions é utilizado para schedular um job que consiste em executar o código de ingestão anterior de hora em hora. Isso é feito através do arquivo [.github/workflows/ingestion_pipeline.yaml](.github/workflows/ingestion_pipeline.yaml). **This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket**. 
-- Um Crawler é criado com o AWS Glue para gerar os metados necessários para criar tabelas a partir dos arquivos no bucket
-- O Athena é utilizado para fazer as consultas
-
 
 # Próximos Passos
 - Escrever todos os serviços em Cloud Formation [cf_project_aws_resources.yaml](cf_project_aws_resources.yaml)
