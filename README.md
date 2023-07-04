@@ -14,7 +14,7 @@ Esse projeto é a solução para o primeiro desafio do bootcamp da How de engenh
 
 - O pacote `how-fake-accounts` é utilizado para simular a criação de contas aleatórias
 - O código localizado em [pipelines/ingestion_pipeline.py](pipelines/ingestion_pipeline.py) pega os dados de cadastros realizados e faz o upload deles no S3
-- O Github Actions é utilizado para schedular um job que consiste em executar o código de ingestão anterior de hora em hora. Isso é feito através do arquivo [.github/workflows/ingestion_pipeline.yaml](.github/workflows/ingestion_pipeline.yaml). **This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket**. 
+- O Github Actions é utilizado para schedular um job que consiste em executar o código de ingestão anterior diariamente. Isso é feito através do arquivo [.github/workflows/ingestion_pipeline.yaml](.github/workflows/ingestion_pipeline.yaml). **This pipeline takes in the created accounts for the past hour and ingest them into an S3 bucket**. 
 - Um Crawler é criado com o AWS Glue para gerar os metados necessários para criar tabelas a partir dos arquivos no bucket
 - O Athena é utilizado para fazer as consultas
 
@@ -50,7 +50,7 @@ Esse mesmo script é executada de hora em hora em um workflow do Github Actions,
 
 ## Criar um Crawler dos dados com o AWS Glue
 
-Criei um Crawler apontando para a pasta onde os arquivos estão no S3 e schedulei para o mesmo rodar a cada hora no minuto 10. Como o pipeline de ingestão do Github Actions executada sempre no minuto 0 e dura menos de 1 minutos, assim garanto que sempre que o Crawler rodar, irá encontrar novos arquivos.
+Criei um Crawler apontando para a pasta onde os arquivos estão no S3 e schedulei para o mesmo rodar diariamente logo após a execução do pipeline do github actions.
 
 ![](imgs/aws-glue-crawler.png)
 
