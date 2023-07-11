@@ -1,6 +1,19 @@
 AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  CreateS3Bucket:
+    Type: String
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+
+Conditions:
+  ShouldCreateS3Bucket: !Equals [!Ref CreateS3Bucket, "true"]
+
 Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
+    Condition: ShouldCreateS3Bucket
     Properties:
       BucketName: !Sub '${AWS::AccountId}-landing-zone'
